@@ -1,0 +1,22 @@
+{
+  "@@locale": "en",
+  "appTitle": "Protein Catalog",
+  "actionToggleTheme": "Toggle theme",
+  
+  "proteinAccession": "Accession: {accession}",
+  
+  "detailOrganism": "Organism",
+  "detailProteinName": "Protein Name",
+  "detailSequenceLength": "Sequence Length: {length} AA",
+  
+  "sectionSequence": "Amino Acid Sequence",
+  "sectionRelated": "Related Proteins",
+  
+  "detailNotFound": "No record “{accession}” in the catalog",
+  "pageNotFound": "No such page",
+  
+  "searchHint": "Search by entry name (e.g. ALPA)",
+  "actionClearSearch": "Clear search",
+  
+  "emptyRelated": "No related proteins found."
+}
