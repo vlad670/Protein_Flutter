@@ -11,11 +11,10 @@ abstract final class AppRoutes {
   static const String list = '/';
   static String detail(String accession) => '/protein/$accession';
 
-
-/// Какой адрес какой экран показывает.
-///
-/// Роутер только показывает экраны. Bloc и Cubit он не создаёт: Cubit списка
-/// создан в корне приложения, Bloc детали создаёт сам экран детали.
+  /// Какой адрес какой экран показывает.
+  ///
+  /// Роутер только показывает экраны. Bloc и Cubit он не создаёт: Cubit списка
+  /// создан в корне приложения, Bloc детали создаёт сам экран детали.
   static final router = GoRouter(
     initialLocation: list,
     routes: [

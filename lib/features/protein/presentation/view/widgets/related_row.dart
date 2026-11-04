@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
 import '../../../../../common/navigation/app_router.dart';
 import '../../../domain/protein_model.dart';
 import '../../utils/protein_format.dart';
@@ -9,10 +10,7 @@ import '../../utils/protein_format.dart';
 import 'package:protein/l10n/app_localizations.dart';
 
 class RelatedRow extends StatelessWidget {
-  const RelatedRow({
-    super.key,
-    required this.relatedProteins,
-  });
+  const RelatedRow({super.key, required this.relatedProteins});
 
   /// Список полных моделей связанных белков (загруженных BLoC'ом)
   final List<ProteinModel> relatedProteins;
@@ -22,9 +20,8 @@ class RelatedRow extends StatelessWidget {
     if (relatedProteins.isEmpty) {
       return Text(
         AppLocalizations.of(context).emptyRelated,
-        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-          color: Theme.of(context).colorScheme.onSurfaceVariant,
-        ),
+        style: Theme.of(context).textTheme.bodyMedium
+            ?.copyWith(color: Theme.of(context).colorScheme.onSurfaceVariant),
       );
     }
 
@@ -33,8 +30,7 @@ class RelatedRow extends StatelessWidget {
       spacing: 12,
       runSpacing: 12,
       children: [
-        for (final related in relatedProteins)
-          _RelatedStage(protein: related),
+        for (final related in relatedProteins) _RelatedStage(protein: related),
       ],
     );
   }

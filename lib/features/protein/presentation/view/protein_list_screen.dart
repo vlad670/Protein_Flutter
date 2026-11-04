@@ -32,7 +32,7 @@ class ProteinListScreen extends StatelessWidget {
                 if (state.items.isEmpty && state.query.isNotEmpty) {
                   return Center(
                     child: Text(
-                      AppLocalizations.of(context).nothingFound, 
+                      AppLocalizations.of(context).nothingFound,
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                   );

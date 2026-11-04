@@ -1,10 +1,9 @@
 import 'protein_model.dart';
 
 abstract interface class IProteinRepository {
+  Future<List<ProteinModel>> getProteins({String? query});
 
-  Future<List<ProteinModel>> getProteins();
+  Future<ProteinModel> getProteinByAccession(String accession);
 
-   Future<ProteinModel> getProteinByAccession(String accession);
-
-   Future<List<ProteinModel>> searchProteins(String query);
+  Future<ProteinDetailData> getProteinDetailData(String accession);
 }

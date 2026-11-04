@@ -5,6 +5,7 @@ import 'package:protein/features/protein/domain/i_protein_repository.dart';
 import 'package:protein/features/protein/domain/protein_model.dart';
 import 'package:protein/features/protein/presentation/bloc/detail/protein_detail_event.dart';
 import 'package:protein/features/protein/presentation/bloc/detail/protein_detail_state.dart';
+import 'package:protein/features/protein/domain/protein_exceptions.dart';
 
 class ProteinDetailBloc extends Bloc<ProteinDetailEvent, ProteinDetailState> {
   ProteinDetailBloc(this._repository) : super(const ProteinDetailLoading()) {
@@ -18,24 +19,23 @@ class ProteinDetailBloc extends Bloc<ProteinDetailEvent, ProteinDetailState> {
     Emitter<ProteinDetailState> emit,
   ) async {
     try {
-      final protein = await _repository.getProteinByAccession(event.accession);
-      final relatedFullModels = <ProteinModel>[];
-      for (final relatedLink in protein.related) {
-        try {
-           final relatedProtein = await _repository.getProteinByAccession(relatedLink.accession);
-           relatedFullModels.add(relatedProtein);
-        } catch (e) { continue;
-        }
-      }
+      final detailData = await _repository.getProteinDetailData(
+        event.accession,
+      );
 
       if (isClosed) return;
-      emit(ProteinDetailLoaded(
-        protein, 
-        relatedProteins: relatedFullModels,
-      ));
-    } catch (e) {
+      emit(
+        ProteinDetailLoaded(
+          detailData.mainProtein,
+          relatedProteins: detailData.relatedProteins,
+        ),
+      );
+    } on ProteinNotFoundException catch (e) {
       if (isClosed) return;
       emit(ProteinDetailNotFound(event.accession));
+    } catch (e) {
+      if (isClosed) return;
+      emit(ProteinDetailError('Произошла системная ошибка: $e'));
     }
   }
 }

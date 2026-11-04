@@ -23,3 +23,8 @@ final class ProteinDetailNotFound extends ProteinDetailState {
 
   final String accession;
 }
+
+final class ProteinDetailError extends ProteinDetailState {
+  const ProteinDetailError(this.message);
+  final String message;
+}

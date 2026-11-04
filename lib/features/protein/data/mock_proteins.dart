@@ -22,9 +22,7 @@ const List<ProteinModel> mockProteins = [
     organism: "Homo sapiens (Human)",
     geneName: "BETB",
     sequence: "MASVLQKPTFHDLLKQAERVGSFTTNPKELCDQLM",
-    related: [
-      RelatedProtein(accession: "P00001", name: "ALPA"),
-    ],
+    related: [RelatedProtein(accession: "P00001", name: "ALPA")],
   ),
   ProteinModel(
     accession: "P00003",
@@ -42,9 +40,7 @@ const List<ProteinModel> mockProteins = [
     organism: "Mus musculus (Mouse)",
     geneName: "Deld",
     sequence: "MASPTKQVLEDCRNHFGTPLQSVENAKMDCLRTQ",
-    related: [
-      RelatedProtein(accession: "P00006", name: "ZETF"),
-    ],
+    related: [RelatedProtein(accession: "P00006", name: "ZETF")],
   ),
   ProteinModel(
     accession: "P00005",
@@ -53,9 +49,7 @@ const List<ProteinModel> mockProteins = [
     organism: "Homo sapiens (Human)",
     geneName: "EPSE",
     sequence: "MKLQRTVPNDCEAHFGSLKQPTVENDMRCLATQ",
-    related: [
-      RelatedProtein(accession: "P00001", name: "ALPA"),
-    ],
+    related: [RelatedProtein(accession: "P00001", name: "ALPA")],
   ),
   ProteinModel(
     accession: "P00006",
@@ -64,9 +58,7 @@ const List<ProteinModel> mockProteins = [
     organism: "Mus musculus (Mouse)",
     geneName: "Zetf",
     sequence: "MTKPLQRVSNDECAHFTGLKQEPTVNDMRCLQ",
-    related: [
-      RelatedProtein(accession: "P00004", name: "DELD"),
-    ],
+    related: [RelatedProtein(accession: "P00004", name: "DELD")],
   ),
   ProteinModel(
     accession: "P00007",
@@ -93,9 +85,7 @@ const List<ProteinModel> mockProteins = [
     organism: "Homo sapiens (Human)",
     geneName: "IOTP",
     sequence: "MLPQKTRVSENDCHAFGLTQKVENPMTDCRQL",
-    related: [
-      RelatedProtein(accession: "P00010", name: "KAPH"),
-    ],
+    related: [RelatedProtein(accession: "P00010", name: "KAPH")],
   ),
   ProteinModel(
     accession: "P00010",
@@ -104,9 +94,7 @@ const List<ProteinModel> mockProteins = [
     organism: "Homo sapiens (Human)",
     geneName: "KAPH",
     sequence: "MPLKQTRVNSEDCAHFGLTKQVENPMDTRCQL",
-    related: [
-      RelatedProtein(accession: "P00009", name: "IOTP"),
-    ],
+    related: [RelatedProtein(accession: "P00009", name: "IOTP")],
   ),
   ProteinModel(
     accession: "P00011",
@@ -133,9 +121,7 @@ const List<ProteinModel> mockProteins = [
     organism: "Homo sapiens (Human)",
     geneName: "NUOX",
     sequence: "MPKTLQRVSENDACHFGLTKEQNVPMTDRCQL",
-    related: [
-      RelatedProtein(accession: "P00014", name: "XIRE"),
-    ],
+    related: [RelatedProtein(accession: "P00014", name: "XIRE")],
   ),
   ProteinModel(
     accession: "P00014",
@@ -144,9 +130,7 @@ const List<ProteinModel> mockProteins = [
     organism: "Homo sapiens (Human)",
     geneName: "XIRE",
     sequence: "MTLPKQRVNSEDACHGFLTKEQVNPMTDRCQL",
-    related: [
-      RelatedProtein(accession: "P00013", name: "NUOX"),
-    ],
+    related: [RelatedProtein(accession: "P00013", name: "NUOX")],
   ),
   ProteinModel(
     accession: "P00015",
@@ -173,9 +157,7 @@ const List<ProteinModel> mockProteins = [
     organism: "Homo sapiens (Human)",
     geneName: "RHOL",
     sequence: "MPLTKQRVSNEDACHFGKLTEVQNPMTRDCQL",
-    related: [
-      RelatedProtein(accession: "P00018", name: "SIGM"),
-    ],
+    related: [RelatedProtein(accession: "P00018", name: "SIGM")],
   ),
   ProteinModel(
     accession: "P00018",
@@ -184,9 +166,7 @@ const List<ProteinModel> mockProteins = [
     organism: "Homo sapiens (Human)",
     geneName: "SIGM",
     sequence: "MTPLKQRVNSEDACHGKFLTEQVNPMTRDCQL",
-    related: [
-      RelatedProtein(accession: "P00017", name: "RHOL"),
-    ],
+    related: [RelatedProtein(accession: "P00017", name: "RHOL")],
   ),
   ProteinModel(
     accession: "P00019",

@@ -7,5 +7,5 @@ sealed class ProteinDetailEvent {
 final class ProteinDetailOpened extends ProteinDetailEvent {
   const ProteinDetailOpened(this.accession);
 
-  final String accession; 
+  final String accession;
 }

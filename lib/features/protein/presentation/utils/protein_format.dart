@@ -26,4 +26,3 @@ extension ProteinFormat on ProteinModel {
   /// Цвет первого типа: им красятся подложка картинки и полосы характеристик.
   //Color get accent => types.first.color;
 }
-

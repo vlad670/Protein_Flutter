@@ -36,7 +36,7 @@ class App extends StatelessWidget {
           // приложение. Поэтому список не теряется, пока открыта деталь.
           BlocProvider(
             create: (context) =>
-                ProteinListCubit(context.read<IProteinRepository>())..load(),
+                ProteinListCubit(context.read<IProteinRepository>())..init(),
           ),
           // Тема относится ко всему приложению, поэтому её Cubit тоже здесь.
           BlocProvider(create: (_) => ThemeCubit()),

@@ -1,14 +1,10 @@
 // lib/features/protein/domain/protein_model.dart
 
-
 final class RelatedProtein {
-  const RelatedProtein({
-    required this.accession,
-    required this.name,
-  });
+  const RelatedProtein({required this.accession, required this.name});
 
   final String accession;
-  
+
   final String name;
 }
 
@@ -36,4 +32,13 @@ final class ProteinModel {
   final String sequence;
 
   final List<RelatedProtein> related;
+}
+
+final class ProteinDetailData {
+  const ProteinDetailData({
+    required this.mainProtein,
+    required this.relatedProteins,
+  });
+  final ProteinModel mainProtein;
+  final List<ProteinModel> relatedProteins;
 }

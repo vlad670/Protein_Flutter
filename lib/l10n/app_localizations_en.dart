@@ -82,19 +82,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get detailOrganism => 'Organism';
-  
+
   @override
   String get detailProteinName => 'Protein Name';
-  
+
   @override
   String detailSequenceLength(int length) => 'Sequence Length: $length AA';
-  
+
   @override
   String get sectionSequence => 'Amino Acid Sequence';
-  
+
   @override
   String get sectionRelated => 'Related Proteins';
-  
+
   @override
   String get emptyRelated => 'No related proteins found.';
 

@@ -26,14 +26,14 @@ class ProteinCard extends StatelessWidget {
             width: 64,
             height: 64,
             decoration: BoxDecoration(
-            //  color: protein.accent.withOpacity(0.2),
+              //  color: protein.accent.withOpacity(0.2),
               shape: BoxShape.circle,
             ),
             child: Center(
               child: Text(
                 protein.displayName.substring(0, 1).toUpperCase(),
                 style: theme.textTheme.headlineSmall?.copyWith(
-                //  color: protein.accent,
+                  //  color: protein.accent,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -52,7 +52,7 @@ class ProteinCard extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  protein.proteinName, 
+                  protein.proteinName,
                   style: theme.textTheme.titleMedium,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
