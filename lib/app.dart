@@ -7,15 +7,11 @@ import 'package:protein/features/protein/domain/i_protein_repository.dart';
 import 'package:protein/features/protein/presentation/bloc/list/protein_list_cubit.dart';
 import 'package:protein/common/theme/app_theme.dart';
 import 'package:protein/l10n/app_localizations.dart';
+import 'package:dio/dio.dart';
+import 'package:protein/features/protein/data/api/protein_api.dart';
+import 'package:protein/features/protein/data/data_sources/network_protein_data_source.dart';
 
-/// Корень приложения. Его запускают все таргеты: web, desktop, Android.
-///
-/// Здесь собираются зависимости. Только app.dart знает, какая реализация
-/// стоит за [IProteinRepository]. Остальные получают её через
-/// `context.read<IProteinRepository>()`.
-///
-/// [locale] задаёт язык интерфейса. Без него язык берётся из системы, в
-/// браузере из настроек браузера.
+
 class App extends StatelessWidget {
   const App({super.key, this.locale});
 
@@ -25,15 +21,21 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
       providers: [
-        // Тип указан явно: репозиторий ищут по интерфейсу, а не по классу.
         RepositoryProvider<IProteinRepository>(
-          create: (_) => const ProteinRepository(),
+          create: (_){
+            final dio = Dio(BaseOptions(baseUrl: "http://rest.uniprot.org"));
+
+            final api = ProteinApi(dio);
+
+            final dataSourse = NetworkProteinDataSource(api);
+
+            return ProteinRepository(dataSourse);
+
+          },
         ),
       ],
       child: MultiBlocProvider(
         providers: [
-          // Cubit списка создаётся один раз и живёт, пока работает
-          // приложение. Поэтому список не теряется, пока открыта деталь.
           BlocProvider(
             create: (context) =>
                 ProteinListCubit(context.read<IProteinRepository>())..load(),
