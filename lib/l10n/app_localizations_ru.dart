@@ -11,7 +11,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get appTitle => 'Каталог белков';
-  
+
   @override
   String get nothingFound => 'Ничего не найдено';
 
@@ -85,19 +85,19 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get detailOrganism => 'Организм';
-  
+
   @override
   String get detailProteinName => 'Название белка';
-  
+
   @override
   String detailSequenceLength(int length) => 'Длина: $length АК';
-  
+
   @override
   String get sectionSequence => 'Аминокислотная последовательность';
-  
+
   @override
   String get sectionRelated => 'Связанные белки';
-  
+
   @override
   String get emptyRelated => 'Связанных белков не найдено.';
 

@@ -10,7 +10,6 @@ class NetworkProteinDataSource implements IProteinDataSource {
 
   @override
   Future<UniProtSearchPageDto> searchProteins(String query) async {
-    // Вызываем API, обрабатывать ошибки будем в репозитории (как в Pokédex)
     return await _api.searchProteins(query: query);
   }
 

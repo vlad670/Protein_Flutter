@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 // Убедитесь, что пути соответствуют вашему новому проекту
 import '../../../../common/widgets/app_scaffold.dart';
 import '../../domain/i_protein_repository.dart';
@@ -8,7 +9,9 @@ import '../bloc/detail/protein_detail_bloc.dart';
 import '../bloc/detail/protein_detail_event.dart';
 import '../bloc/detail/protein_detail_state.dart';
 import '../utils/protein_format.dart';
+
 import 'package:protein/l10n/app_localizations.dart';
+
 import 'widgets/section.dart';
 import 'widgets/related_row.dart';
 
@@ -31,10 +34,15 @@ class ProteinDetailScreen extends StatelessWidget {
               child: CircularProgressIndicator(),
             ),
             ProteinDetailNotFound(:final accession) => Center(
-              child: Text(AppLocalizations.of(context).detailNotFound(accession)), 
+              child: Text(
+                AppLocalizations.of(context).detailNotFound(accession),
+              ),
             ),
             ProteinDetailLoaded(:final protein, :final relatedProteins) =>
-              _DetailContent(protein: protein, relatedProteins: relatedProteins),
+              _DetailContent(
+                protein: protein,
+                relatedProteins: relatedProteins,
+              ),
           },
         ),
       ),
@@ -52,7 +60,7 @@ class _DetailContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final l10n = AppLocalizations.of(context);
-    
+
     return SingleChildScrollView(
       padding: const EdgeInsets.all(24),
       child: Center(
@@ -69,9 +77,7 @@ class _DetailContent extends StatelessWidget {
                   Container(
                     width: 80,
                     height: 80,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                    ),
+                    decoration: const BoxDecoration(shape: BoxShape.circle),
                     child: Center(
                       child: Text(
                         protein.displayName.substring(0, 1).toUpperCase(),
@@ -93,8 +99,8 @@ class _DetailContent extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          protein.displayName, 
-                          style: theme.textTheme.headlineMedium
+                          protein.displayName,
+                          style: theme.textTheme.headlineMedium,
                         ),
                         Text(
                           protein.geneName,
@@ -110,7 +116,9 @@ class _DetailContent extends StatelessWidget {
               // 2. Основная информация (Организм и Полное название)
               Card(
                 elevation: 0,
-                color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.5),
+                color: theme.colorScheme.surfaceContainerHighest.withValues(
+                  alpha: 0.5,
+                ),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(16),
                 ),
@@ -119,11 +127,22 @@ class _DetailContent extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _InfoRow(title: l10n.detailOrganism, value: protein.organism),
+                      _InfoRow(
+                        title: l10n.detailOrganism,
+                        value: protein.organism,
+                      ),
                       const SizedBox(height: 8),
-                      _InfoRow(title: l10n.detailProteinName, value: protein.proteinName),
+                      _InfoRow(
+                        title: l10n.detailProteinName,
+                        value: protein.proteinName,
+                      ),
                       const SizedBox(height: 8),
-                      _InfoRow(title: l10n.detailSequenceLength(protein.sequence.length), value: ''),
+                      _InfoRow(
+                        title: l10n.detailSequenceLength(
+                          protein.sequence.length,
+                        ),
+                        value: '',
+                      ),
                     ],
                   ),
                 ),
@@ -136,7 +155,9 @@ class _DetailContent extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.3),
+                  color: theme.colorScheme.surfaceContainerHighest.withValues(
+                    alpha: 0.3,
+                  ),
                   border: Border.all(color: theme.colorScheme.outlineVariant),
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -199,12 +220,7 @@ class _InfoRow extends StatelessWidget {
             ),
           ),
         ),
-        Expanded(
-          child: Text(
-            value,
-            style: theme.textTheme.bodyMedium,
-          ),
-        ),
+        Expanded(child: Text(value, style: theme.textTheme.bodyMedium)),
       ],
     );
   }

@@ -11,7 +11,6 @@ import 'package:dio/dio.dart';
 import 'package:protein/features/protein/data/api/protein_api.dart';
 import 'package:protein/features/protein/data/data_sources/network_protein_data_source.dart';
 
-
 class App extends StatelessWidget {
   const App({super.key, this.locale});
 
@@ -22,15 +21,16 @@ class App extends StatelessWidget {
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider<IProteinRepository>(
-          create: (_){
-            final dio = Dio(BaseOptions(baseUrl: "http://rest.uniprot.org"));
+          create: (_) {
+            final dio = Dio(
+              BaseOptions(baseUrl: "https://api.poopmap.net/api/v1/"),
+            );
 
             final api = ProteinApi(dio);
 
             final dataSourse = NetworkProteinDataSource(api);
 
             return ProteinRepository(dataSourse);
-
           },
         ),
       ],
@@ -40,14 +40,11 @@ class App extends StatelessWidget {
             create: (context) =>
                 ProteinListCubit(context.read<IProteinRepository>())..load(),
           ),
-          // Тема относится ко всему приложению, поэтому её Cubit тоже здесь.
           BlocProvider(create: (_) => ThemeCubit()),
         ],
-        // BlocBuilder пересобирает MaterialApp, когда меняется тема.
         child: BlocBuilder<ThemeCubit, ThemeMode>(
           builder: (context, themeMode) => MaterialApp.router(
             routerConfig: AppRoutes.router,
-            // Заголовок вкладки браузера тоже подпись, поэтому он из ARB.
             onGenerateTitle: (context) => AppLocalizations.of(context).appTitle,
             debugShowCheckedModeBanner: false,
             theme: AppTheme.light,

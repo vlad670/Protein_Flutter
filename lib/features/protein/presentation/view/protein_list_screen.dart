@@ -24,31 +24,91 @@ class ProteinListScreen extends StatelessWidget {
               onChanged: context.read<ProteinListCubit>().search,
             ),
           ),
-          // Expanded обязателен: в Column без него ListView получает
-          // бесконечную высоту и падает с ошибкой unbounded height.
           Expanded(
             child: BlocBuilder<ProteinListCubit, ProteinListState>(
-              builder: (context, state) {
-                if (state.items.isEmpty && state.query.isNotEmpty) {
-                  return Center(
-                    child: Text(
-                      AppLocalizations.of(context).nothingFound, 
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
-                  );
-                }
-                return ListView.separated(
-                  padding: const EdgeInsets.all(16),
-                  itemCount: state.items.length,
-                  separatorBuilder: (_, _) => const SizedBox(height: 12),
-                  itemBuilder: (context, index) =>
-                      ProteinCard(protein: state.items[index]),
-                );
+              builder: (context, state) => switch (state) {
+                ProteinListLoading() => const Center(
+                  child: CircularProgressIndicator(),
+                ),
+                ProteinListLoaded(:final items) when items.isEmpty => Center(
+                  child: Text(AppLocalizations.of(context).nothingFound),
+                ),
+                ProteinListLoaded() => _ProteinList(state: state),
               },
             ),
           ),
         ],
       ),
+    );
+  }
+}
+
+class _ProteinList extends StatefulWidget {
+  const _ProteinList({required this.state});
+
+  final ProteinListLoaded state;
+
+  @override
+  State<_ProteinList> createState() => _PokemonListState();
+}
+
+class _PokemonListState extends State<_ProteinList> {
+  late final ScrollController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = ScrollController()..addListener(_onScroll);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void _onScroll() {
+    if (_controller.position.extentAfter < 240) {
+      context.read<ProteinListCubit>().loadMore();
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final state = widget.state;
+    final showFooter = state.isLoadingMore || state.loadMoreError != null;
+    // ListView.separated строит карточки по мере прокрутки, а не все сразу.
+    return ListView.separated(
+      controller: _controller,
+      padding: const EdgeInsets.all(16),
+      itemCount: state.items.length + (showFooter ? 1 : 0),
+      separatorBuilder: (_, _) => const SizedBox(height: 12),
+      itemBuilder: (context, index) => index < state.items.length
+          ? ProteinCard(pokemon: state.items[index])
+          : _Footer(state: state),
+    );
+  }
+}
+
+/// Под списком: индикатор догрузки или ошибка с «Повторить».
+class _Footer extends StatelessWidget {
+  const _Footer({required this.state});
+
+  final PokemonListLoaded state;
+
+  @override
+  Widget build(BuildContext context) {
+    final error = state.loadMoreError;
+    return Center(
+      child: error == null
+          ? const Padding(
+              padding: EdgeInsets.all(16),
+              child: CircularProgressIndicator(),
+            )
+          : LoadErrorView(
+              error: error,
+              onRetry: context.read<PokemonListCubit>().loadMore,
+            ),
     );
   }
 }
