@@ -1,0 +1,13 @@
+{
+    "folder-color.pathColors": [
+        {
+            "folderPath": "my_catalog\\lib\\features\\protein\\data\\",
+            "color": "foldercolorizer.color_00d7ff"
+        },
+        {
+            "folderPath": "my_catalog\\lib\\features\\protein\\data\\",
+            "isFolderOnly": true,
+            "color": "foldercolorizer.color_000080"
+        }
+    ]
+}

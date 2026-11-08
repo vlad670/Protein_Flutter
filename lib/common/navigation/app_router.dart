@@ -1,0 +1,28 @@
+import 'package:go_router/go_router.dart';
+import 'package:protein/common/widgets/app_scaffold.dart';
+import 'package:protein/features/protein/presentation/view/protein_detail_screen.dart';
+import 'package:protein/features/protein/presentation/view/protein_list_screen.dart';
+import 'package:protein/l10n/app_localizations.dart';
+
+
+abstract final class AppRoutes {
+  static const String list = '/';
+  static String detail(String accession) => '/protein/$accession';
+
+  static final router = GoRouter(
+    initialLocation: list,
+    routes: [
+      GoRoute(
+        path: list,
+        builder: (context, state) => const ProteinListScreen(),
+      ),
+      GoRoute(
+        path: '/protein/:accession',
+        builder: (context, state) {
+          final accession = state.pathParameters['accession']!;
+          return ProteinDetailScreen(accession: accession);
+        },
+      ),
+    ],
+  );
+}
