@@ -16,7 +16,7 @@ class ThemeToggleButton extends StatelessWidget {
     return IconButton(
       onPressed: () => context.read<ThemeCubit>().toggle(),
       // Подсказка тоже подпись. Её же читает экранный диктор.
-      tooltip: AppLocalizations.of(context).actionToggleTheme,
+      tooltip: AppLocalizations.of(context)!.actionToggleTheme,
       icon: Icon(dark ? Icons.light_mode : Icons.dark_mode),
     );
   }

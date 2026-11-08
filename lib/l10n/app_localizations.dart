@@ -62,17 +62,15 @@ import 'app_localizations_ru.dart';
 /// be consistent with the languages listed in the AppLocalizations.supportedLocales
 /// property.
 abstract class AppLocalizations {
-  AppLocalizations(String locale)
-    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  AppLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
-  static AppLocalizations of(BuildContext context) {
-    return Localizations.of<AppLocalizations>(context, AppLocalizations)!;
+  static AppLocalizations? of(BuildContext context) {
+    return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
-  static const LocalizationsDelegate<AppLocalizations> delegate =
-      _AppLocalizationsDelegate();
+  static const LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -84,193 +82,111 @@ abstract class AppLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
-      <LocalizationsDelegate<dynamic>>[
-        delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ];
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
+    delegate,
+    GlobalMaterialLocalizations.delegate,
+    GlobalCupertinoLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+  ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('en'),
-    Locale('ru'),
+    Locale('ru')
   ];
 
-  /// Заголовок в шапке и во вкладке браузера
+  /// No description provided for @appTitle.
   ///
-  /// In ru, this message translates to:
-  /// **'Покедекс'**
+  /// In en, this message translates to:
+  /// **'Protein Catalog'**
   String get appTitle;
 
   /// No description provided for @actionToggleTheme.
   ///
-  /// In ru, this message translates to:
-  /// **'Переключить тему'**
+  /// In en, this message translates to:
+  /// **'Toggle theme'**
   String get actionToggleTheme;
 
-  /// No description provided for @pokemonNumber.
+  /// No description provided for @proteinAccession.
   ///
-  /// In ru, this message translates to:
-  /// **'#{number}'**
-  String proteinNumber(String number);
+  /// In en, this message translates to:
+  /// **'Accession: {accession}'**
+  String proteinAccession(String accession);
 
-  /// No description provided for @statHp.
+  /// No description provided for @detailOrganism.
   ///
-  /// In ru, this message translates to:
-  /// **'Здоровье'**
-  String get statHp;
-
-  /// No description provided for @statAttack.
-  ///
-  /// In ru, this message translates to:
-  /// **'Атака'**
-  String get statAttack;
-
-  /// No description provided for @statDefense.
-  ///
-  /// In ru, this message translates to:
-  /// **'Защита'**
-  String get statDefense;
-
-  /// No description provided for @statSpecialAttack.
-  ///
-  /// In ru, this message translates to:
-  /// **'Спец. атака'**
-  String get statSpecialAttack;
-
-  /// No description provided for @statSpecialDefense.
-  ///
-  /// In ru, this message translates to:
-  /// **'Спец. защита'**
-  String get statSpecialDefense;
-
-  /// No description provided for @statSpeed.
-  ///
-  /// In ru, this message translates to:
-  /// **'Скорость'**
-  String get statSpeed;
-
-  /// No description provided for @detailHeight.
-  ///
-  /// In ru, this message translates to:
-  /// **'Рост: {height} м'**
-  String detailHeight(double height);
-
-  /// No description provided for @detailWeight.
-  ///
-  /// In ru, this message translates to:
-  /// **'Вес: {weight} кг'**
-  String detailWeight(double weight);
-
-  /// No description provided for @detailBaseXp.
-  ///
-  /// In ru, this message translates to:
-  /// **'Базовый опыт: {xp}'**
-  String detailBaseXp(int xp);
-
-  /// No description provided for @sectionStats.
-  ///
-  /// In ru, this message translates to:
-  /// **'Характеристики'**
-  String get sectionStats;
-
-  /// No description provided for @sectionAbilities.
-  ///
-  /// In ru, this message translates to:
-  /// **'Способности'**
-  String get sectionAbilities;
-
-  /// No description provided for @sectionEvolution.
-  ///
-  /// In ru, this message translates to:
-  /// **'Эволюция'**
-  String get sectionEvolution;
-
-  /// Способность, которая в игре достаётся редко
-  ///
-  /// In ru, this message translates to:
-  /// **'{name} · скрытая'**
-  String abilityHidden(String name);
-
-  /// Номер из адресной строки не нашёлся
-  ///
-  /// In ru, this message translates to:
-  /// **'Записи «{id}» в каталоге нет'**
-  String detailNotFound(String id);
-
+  /// In en, this message translates to:
+  /// **'Organism'**
   String get detailOrganism;
+
+  /// No description provided for @detailProteinName.
+  ///
+  /// In en, this message translates to:
+  /// **'Protein Name'**
   String get detailProteinName;
+
+  /// No description provided for @detailSequenceLength.
+  ///
+  /// In en, this message translates to:
+  /// **'Sequence Length: {length} AA'**
   String detailSequenceLength(int length);
+
+  /// No description provided for @sectionSequence.
+  ///
+  /// In en, this message translates to:
+  /// **'Amino Acid Sequence'**
   String get sectionSequence;
+
+  /// No description provided for @sectionRelated.
+  ///
+  /// In en, this message translates to:
+  /// **'Related Proteins'**
   String get sectionRelated;
-  String get emptyRelated;
-  String get nothingFound;
 
-  /// Адрес, которого нет среди маршрутов
+  /// No description provided for @detailNotFound.
   ///
-  /// In ru, this message translates to:
-  /// **'Такой страницы нет'**
+  /// In en, this message translates to:
+  /// **'No record “{accession}” in the catalog'**
+  String detailNotFound(String accession);
+
+  /// No description provided for @pageNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No such page'**
   String get pageNotFound;
-
-  /// No description provided for @typeBug.
-  ///
-  /// In ru, this message translates to:
-  /// **'Насекомое'**
-  String get typeBug;
-
-  /// No description provided for @typeFire.
-  ///
-  /// In ru, this message translates to:
-  /// **'Огонь'**
-  String get typeFire;
-
-  /// No description provided for @typeFlying.
-  ///
-  /// In ru, this message translates to:
-  /// **'Полёт'**
-  String get typeFlying;
-
-  /// Тип записи. В данных он приходит идентификатором grass, на экран идёт эта подпись
-  ///
-  /// In ru, this message translates to:
-  /// **'Трава'**
-  String get typeGrass;
-
-  /// No description provided for @typeNormal.
-  ///
-  /// In ru, this message translates to:
-  /// **'Обычный'**
-  String get typeNormal;
-
-  /// No description provided for @typePoison.
-  ///
-  /// In ru, this message translates to:
-  /// **'Яд'**
-  String get typePoison;
-
-  /// No description provided for @typeWater.
-  ///
-  /// In ru, this message translates to:
-  /// **'Вода'**
-  String get typeWater;
 
   /// No description provided for @searchHint.
   ///
-  /// In ru, this message translates to:
-  /// **'Поиск по имени'**
+  /// In en, this message translates to:
+  /// **'Search by entry name'**
   String get searchHint;
 
   /// No description provided for @actionClearSearch.
   ///
-  /// In ru, this message translates to:
-  /// **'Очистить поиск'**
+  /// In en, this message translates to:
+  /// **'Clear search'**
   String get actionClearSearch;
+
+  /// No description provided for @emptyRelated.
+  ///
+  /// In en, this message translates to:
+  /// **'No related proteins found.'**
+  String get emptyRelated;
+
+  /// No description provided for @nothingFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing found'**
+  String get nothingFound;
+
+  /// No description provided for @systemError.
+  ///
+  /// In en, this message translates to:
+  /// **'System error occurred: {error}'**
+  String systemError(String error);
 }
 
-class _AppLocalizationsDelegate
-    extends LocalizationsDelegate<AppLocalizations> {
+class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
   const _AppLocalizationsDelegate();
 
   @override
@@ -279,26 +195,25 @@ class _AppLocalizationsDelegate
   }
 
   @override
-  bool isSupported(Locale locale) =>
-      <String>['en', 'ru'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['en', 'ru'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
 }
 
 AppLocalizations lookupAppLocalizations(Locale locale) {
+
+
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'en':
-      return AppLocalizationsEn();
-    case 'ru':
-      return AppLocalizationsRu();
+    case 'en': return AppLocalizationsEn();
+    case 'ru': return AppLocalizationsRu();
   }
 
   throw FlutterError(
     'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
     'an issue with the localizations generation tool. Please file an issue '
     'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.',
+    'that was used.'
   );
 }

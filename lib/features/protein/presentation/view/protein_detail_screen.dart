@@ -15,7 +15,6 @@ import 'package:protein/l10n/app_localizations.dart';
 import 'widgets/section.dart';
 import 'widgets/related_row.dart';
 
-/// Экран детальной информации о белке.
 class ProteinDetailScreen extends StatelessWidget {
   const ProteinDetailScreen({super.key, required this.accession});
 
@@ -35,7 +34,7 @@ class ProteinDetailScreen extends StatelessWidget {
             ),
             ProteinDetailNotFound(:final accession) => Center(
               child: Text(
-                AppLocalizations.of(context).detailNotFound(accession),
+                AppLocalizations.of(context)!.detailNotFound(accession),
               ),
             ),
             ProteinDetailLoaded(:final protein, :final relatedProteins) =>
@@ -43,6 +42,9 @@ class ProteinDetailScreen extends StatelessWidget {
                 protein: protein,
                 relatedProteins: relatedProteins,
               ),
+            ProteinDetailError(:final message) => Center(
+              child: Text(AppLocalizations.of(context)!.systemError(message)),
+            ),
           },
         ),
       ),
@@ -64,13 +66,11 @@ class _DetailContent extends StatelessWidget {
     return SingleChildScrollView(
       padding: const EdgeInsets.all(24),
       child: Center(
-        // Ограничиваем ширину для красоты на больших экранах
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 640),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // 1. Заголовок (Кружок с акцентным цветом и название)
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -113,7 +113,6 @@ class _DetailContent extends StatelessWidget {
               ),
               const SizedBox(height: 24),
 
-              // 2. Основная информация (Организм и Полное название)
               Card(
                 elevation: 0,
                 color: theme.colorScheme.surfaceContainerHighest.withValues(
@@ -128,17 +127,17 @@ class _DetailContent extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       _InfoRow(
-                        title: l10n.detailOrganism,
+                        title: l10n!.detailOrganism,
                         value: protein.organism,
                       ),
                       const SizedBox(height: 8),
                       _InfoRow(
-                        title: l10n.detailProteinName,
+                        title: l10n!.detailProteinName,
                         value: protein.proteinName,
                       ),
                       const SizedBox(height: 8),
                       _InfoRow(
-                        title: l10n.detailSequenceLength(
+                        title: l10n!.detailSequenceLength(
                           protein.sequence.length,
                         ),
                         value: '',
@@ -149,8 +148,7 @@ class _DetailContent extends StatelessWidget {
               ),
               const SizedBox(height: 24),
 
-              // 3. Секция Аминокислотной последовательности
-              Section(title: l10n.sectionSequence),
+              Section(title: l10n!.sectionSequence),
               const SizedBox(height: 8),
               Container(
                 padding: const EdgeInsets.all(16),
@@ -162,18 +160,16 @@ class _DetailContent extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Text(
-                  // Разбиваем последовательность пробелами каждые 10 символов для читаемости
                   _formatSequence(protein.sequence),
                   style: theme.textTheme.bodyMedium?.copyWith(
-                    fontFamily: 'monospace', // Моноширинный шрифт важен для последовательностей
+                    fontFamily: 'monospace', 
                     letterSpacing: 1.2,
                   ),
                 ),
               ),
               const SizedBox(height: 24),
 
-              // 4. Связанные белки (Related)
-              Section(title: l10n.sectionRelated),
+              Section(title: l10n!.sectionRelated),
               const SizedBox(height: 12),
               RelatedRow(relatedProteins: relatedProteins),
               const SizedBox(height: 40),

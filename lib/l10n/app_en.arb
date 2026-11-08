@@ -4,19 +4,51 @@
   "actionToggleTheme": "Toggle theme",
   
   "proteinAccession": "Accession: {accession}",
+  "@proteinAccession": {
+    "placeholders": {
+      "accession": {
+        "type": "String"
+      }
+    }
+  },
   
   "detailOrganism": "Organism",
   "detailProteinName": "Protein Name",
+  
   "detailSequenceLength": "Sequence Length: {length} AA",
+  "@detailSequenceLength": {
+    "placeholders": {
+      "length": {
+        "type": "int"
+      }
+    }
+  },
   
   "sectionSequence": "Amino Acid Sequence",
   "sectionRelated": "Related Proteins",
   
   "detailNotFound": "No record “{accession}” in the catalog",
-  "pageNotFound": "No such page",
+  "@detailNotFound": {
+    "placeholders": {
+      "accession": {
+        "type": "String"
+      }
+    }
+  },
   
-  "searchHint": "Search by entry name (e.g. ALPA)",
+  "pageNotFound": "No such page",
+  "searchHint": "Search by entry name",
   "actionClearSearch": "Clear search",
   
-  "emptyRelated": "No related proteins found."
+  "emptyRelated": "No related proteins found.",
+  "nothingFound": "Nothing found",
+  
+  "systemError": "System error occurred: {error}",
+  "@systemError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  }
 }

@@ -10,6 +10,7 @@ import 'package:protein/l10n/app_localizations.dart';
 import 'package:dio/dio.dart';
 import 'package:protein/features/protein/data/api/protein_api.dart';
 import 'package:protein/features/protein/data/data_sources/network_protein_data_source.dart';
+import 'package:protein/common/theme/locale_cubit.dart';
 
 class App extends StatelessWidget {
   const App({super.key, this.locale});
@@ -23,7 +24,7 @@ class App extends StatelessWidget {
         RepositoryProvider<IProteinRepository>(
           create: (_) {
             final dio = Dio(
-              BaseOptions(baseUrl: "https://api.poopmap.net/api/v1/"),
+              BaseOptions(baseUrl:"http://rest.uniprot.org"),
             );
 
             final api = ProteinApi(dio);
@@ -41,21 +42,27 @@ class App extends StatelessWidget {
                 ProteinListCubit(context.read<IProteinRepository>())..load(),
           ),
           BlocProvider(create: (_) => ThemeCubit()),
+          BlocProvider(create: (_) => LocaleCubit()),
         ],
-        child: BlocBuilder<ThemeCubit, ThemeMode>(
-          builder: (context, themeMode) => MaterialApp.router(
-            routerConfig: AppRoutes.router,
-            onGenerateTitle: (context) => AppLocalizations.of(context).appTitle,
-            debugShowCheckedModeBanner: false,
-            theme: AppTheme.light,
-            darkTheme: AppTheme.dark,
-            themeMode: themeMode,
-            locale: locale,
-            localizationsDelegates: AppLocalizations.localizationsDelegates,
-            supportedLocales: AppLocalizations.supportedLocales,
-          ),
-        ),
+          child: BlocBuilder<ThemeCubit, ThemeMode>(
+            builder: (context, themeMode) {
+              return BlocBuilder<LocaleCubit, Locale?>(
+                builder: (context, localeState) => MaterialApp.router(
+                  routerConfig: AppRoutes.router,
+                  onGenerateTitle: (context) => AppLocalizations.of(context)!.appTitle,
+                  debugShowCheckedModeBanner: false,
+                  theme: AppTheme.light,
+                  darkTheme: AppTheme.dark,
+                  themeMode: themeMode,
+                  locale: localeState, 
+                  localizationsDelegates: AppLocalizations.localizationsDelegates,
+                  supportedLocales: AppLocalizations.supportedLocales,
+                ),
+              );
+            },
+         ),
       ),
     );
+
   }
 }

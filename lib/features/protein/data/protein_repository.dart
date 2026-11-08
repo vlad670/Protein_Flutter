@@ -10,9 +10,7 @@ class ProteinRepository implements IProteinRepository {
 
   @override
   Future<List<ProteinModel>> getProteins() async {
-    final response = await _networkSource.searchProteins('insulin');
-    
-    
+    final response = await _networkSource.searchProteins('organism_id:9606');
     return response.results.map((dto) => dto.toDomain()).toList();
   }
 
@@ -24,6 +22,10 @@ class ProteinRepository implements IProteinRepository {
 
   @override
   Future<List<ProteinModel>> searchProteins(String query) async {
+    if (query.trim().isEmpty) {
+      return getProteins(); 
+    }
+    
     final response = await _networkSource.searchProteins(query);
     return response.results.map((dto) => dto.toDomain()).toList();
   }

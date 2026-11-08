@@ -19,14 +19,18 @@ class ProteinDetailBloc extends Bloc<ProteinDetailEvent, ProteinDetailState> {
   ) async {
     try {
       final protein = await _repository.getProteinByAccession(event.accession);
-      final relatedFullModels = <ProteinModel>[];
-      for (final relatedLink in protein.related) {
+      
+      final relatedFutures = protein.related.map((link) async {
         try {
-           final relatedProtein = await _repository.getProteinByAccession(relatedLink.accession);
-           relatedFullModels.add(relatedProtein);
-        } catch (e) { continue;
+          return await _repository.getProteinByAccession(link.accession);
+        } catch (_) {
+          return null;
         }
-      }
+      });
+
+      final results = await Future.wait(relatedFutures);
+      
+      final relatedFullModels = results.whereType<ProteinModel>().toList();
 
       if (isClosed) return;
       emit(ProteinDetailLoaded(
@@ -35,7 +39,7 @@ class ProteinDetailBloc extends Bloc<ProteinDetailEvent, ProteinDetailState> {
       ));
     } catch (e) {
       if (isClosed) return;
-      emit(ProteinDetailNotFound(event.accession));
+      emit(ProteinDetailError(e.toString())); 
     }
   }
 }

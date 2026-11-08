@@ -18,6 +18,7 @@
   
   "detailOrganism": "Организм",
   "detailProteinName": "Название белка",
+  
   "detailSequenceLength": "Длина: {length} АК",
   "@detailSequenceLength": {
     "placeholders": {
@@ -45,8 +46,18 @@
     "description": "Адрес, которого нет среди маршрутов"
   },
   
-  "searchHint": "Поиск по имени (например, ALPA)",
+  "searchHint": "Поиск по имени",
   "actionClearSearch": "Очистить поиск",
   
-  "emptyRelated": "Связанных белков не найдено."
+  "emptyRelated": "Связанных белков не найдено.",
+  "nothingFound": "Ничего не найдено",
+  
+  "systemError": "Произошла системная ошибка: {error}",
+  "@systemError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  }
 }

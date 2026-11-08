@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:protein/common/widgets/theme_toggle_button.dart';
 import 'package:protein/l10n/app_localizations.dart';
+import 'language_toggle_button.dart';
 
 /// Шапка приложения и место под содержимое экрана. Каждый экран строит свой
 /// AppScaffold.
@@ -19,8 +20,11 @@ class AppScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context).appTitle),
-        actions: [...actions, const ThemeToggleButton()],
+        title: Text(AppLocalizations.of(context)!.appTitle),
+        actions: const [
+          LanguageToggleButton(),
+          ThemeToggleButton(),
+        ],
       ),
       body: body,
     );

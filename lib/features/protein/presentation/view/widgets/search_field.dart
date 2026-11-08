@@ -45,7 +45,7 @@ class _SearchFieldState extends State<SearchField> {
       controller: _controller,
       onChanged: widget.onChanged,
       decoration: InputDecoration(
-        labelText: l10n.searchHint,
+        labelText: l10n!.searchHint,
         prefixIcon: const Icon(Icons.search),
         border: const OutlineInputBorder(),
         suffixIcon: IconButton(

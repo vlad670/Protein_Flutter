@@ -21,7 +21,7 @@ class RelatedRow extends StatelessWidget {
   Widget build(BuildContext context) {
     if (relatedProteins.isEmpty) {
       return Text(
-        AppLocalizations.of(context).emptyRelated,
+        AppLocalizations.of(context)!.emptyRelated,
         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
           color: Theme.of(context).colorScheme.onSurfaceVariant,
         ),
