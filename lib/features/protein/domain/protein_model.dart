@@ -1,5 +1,3 @@
-// lib/features/protein/domain/protein_model.dart
-
 
 final class RelatedProtein {
   const RelatedProtein({

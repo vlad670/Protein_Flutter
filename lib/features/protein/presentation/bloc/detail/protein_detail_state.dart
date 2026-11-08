@@ -1,5 +1,3 @@
-// lib/features/protein/presentation/bloc/detail/protein_detail_state.dart
-
 import '../../../domain/protein_model.dart';
 
 sealed class ProteinDetailState {

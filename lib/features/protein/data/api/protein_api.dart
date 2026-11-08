@@ -10,7 +10,10 @@ final class ProteinApi {
   Future<UniProtSearchPageDto> searchProteins({required String query}) async {
     final json = await _getJson(
       '/uniprotkb/search',
-      queryParameters: {'query': query},
+      queryParameters: {
+        'query': query,
+        'size': 20,
+        },
     );
     return UniProtSearchPageDto.fromJson(json);
   }
@@ -22,9 +25,13 @@ final class ProteinApi {
     String path, {
     Map<String, Object>? queryParameters,
   }) async {
+    final params = <String, Object>{
+      'format': 'json',
+      if (queryParameters != null) ...queryParameters,
+    };
     final response = await _dio.get<Map<String, dynamic>>(
       path,
-      queryParameters: queryParameters,
+      queryParameters: params,
     );
     return response.data ?? (throw const FormatException('Пустой ответ'));
   }

@@ -1,4 +1,3 @@
-// lib/features/protein/presentation/bloc/detail/protein_detail_bloc.dart
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:protein/features/protein/domain/i_protein_repository.dart';

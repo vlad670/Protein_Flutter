@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:protein/l10n/app_localizations.dart';
 
-/// Поле поиска. Каждую правку текста отдаёт наверх через [onChanged].
-///
-/// Виджет с состоянием, потому что TextField нужен TextEditingController.
-/// Контроллер создаётся один раз в initState, а не в build: иначе каждая
-/// пересборка сбрасывала бы текст и курсор. Освобождается контроллер в
-/// dispose.
 class SearchField extends StatefulWidget {
   const SearchField({super.key, required this.onChanged});
 
@@ -31,8 +25,6 @@ class _SearchFieldState extends State<SearchField> {
     super.dispose();
   }
 
-  /// clear() не вызывает onChanged у TextField, поэтому пустой запрос
-  /// отправляется наверх отдельно.
   void _clear() {
     _controller.clear();
     widget.onChanged('');

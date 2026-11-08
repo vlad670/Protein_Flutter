@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-// Убедитесь, что пути соответствуют вашему новому проекту
 import '../../../../common/widgets/app_scaffold.dart';
 import '../../domain/i_protein_repository.dart';
 import '../../domain/protein_model.dart';
@@ -180,8 +179,6 @@ class _DetailContent extends StatelessWidget {
     );
   }
 
-  /// Вспомогательный метод для красивого вывода последовательности
-  /// (Разбивает строку на блоки по 10 символов)
   String _formatSequence(String sequence) {
     if (sequence.isEmpty) return 'No sequence available';
     final buffer = StringBuffer();
@@ -193,7 +190,6 @@ class _DetailContent extends StatelessWidget {
   }
 }
 
-/// Вспомогательный виджет для строки информации
 class _InfoRow extends StatelessWidget {
   const _InfoRow({required this.title, required this.value});
 

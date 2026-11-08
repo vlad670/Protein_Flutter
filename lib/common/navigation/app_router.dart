@@ -4,8 +4,7 @@ import 'package:protein/features/protein/presentation/view/protein_detail_screen
 import 'package:protein/features/protein/presentation/view/protein_list_screen.dart';
 import 'package:protein/l10n/app_localizations.dart';
 
-/// Адреса экранов. Строки путей собраны здесь, чтобы не расходиться по
-/// проекту. Переход из виджета: `context.push(AppRoutes.detail(id))`.
+
 abstract final class AppRoutes {
   static const String list = '/';
   static String detail(String accession) => '/protein/$accession';

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// Заголовок раздела детали с линией под ним.
 class Section extends StatelessWidget {
   const Section({super.key, required this.title});
 

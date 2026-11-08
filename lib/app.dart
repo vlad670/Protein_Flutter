@@ -24,7 +24,15 @@ class App extends StatelessWidget {
         RepositoryProvider<IProteinRepository>(
           create: (_) {
             final dio = Dio(
-              BaseOptions(baseUrl:"http://rest.uniprot.org"),
+              BaseOptions(
+                baseUrl:"https://rest.uniprot.org",
+                headers: {
+                  'Accept': 'application/json',
+
+                  'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                  'Accept-Encoding': 'gzip, deflate, br',
+                },
+              ),
             );
 
             final api = ProteinApi(dio);

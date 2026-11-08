@@ -26,7 +26,6 @@ class ProteinListCubit extends Cubit<ProteinListState> {
     emit(ProteinListLoading(query: query));
     
     try {
-      // Если запрос пустой, просто вызываем загрузку по умолчанию
       if (query.trim().isEmpty) {
         final items = await _repository.getProteins();
         if (isClosed) return;

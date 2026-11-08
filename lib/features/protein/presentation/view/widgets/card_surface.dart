@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// Подложка карточки списка: скруглённые углы, тень, отступ содержимого и
-/// отклик на нажатие.
-///
-/// Цвет берётся из ColorScheme, а не задаётся числом. Цвет текста приходит
-/// из темы: в тёмной теме текст светлеет. Белая подложка, заданная числом,
-/// осталась бы белой, и светлое имя на ней было бы не прочитать.
+
 class CardSurface extends StatelessWidget {
   const CardSurface({super.key, required this.child, this.onTap});
 
