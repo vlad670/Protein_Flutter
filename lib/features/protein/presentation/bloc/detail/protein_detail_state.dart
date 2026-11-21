@@ -1,5 +1,3 @@
-// lib/features/protein/presentation/bloc/detail/protein_detail_state.dart
-
 import '../../../domain/protein_model.dart';
 
 sealed class ProteinDetailState {
@@ -14,7 +12,6 @@ final class ProteinDetailLoaded extends ProteinDetailState {
   const ProteinDetailLoaded(this.protein, {required this.relatedProteins});
 
   final ProteinModel protein;
-
   final List<ProteinModel> relatedProteins;
 }
 
@@ -25,6 +22,7 @@ final class ProteinDetailNotFound extends ProteinDetailState {
 }
 
 final class ProteinDetailError extends ProteinDetailState {
-  const ProteinDetailError(this.message);
-  final String message;
+  const ProteinDetailError([this.message]);
+
+  final String? message;
 }

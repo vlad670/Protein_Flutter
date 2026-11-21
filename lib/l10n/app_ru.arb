@@ -1,12 +1,7 @@
 {
   "@@locale": "ru",
   "appTitle": "Каталог белков",
-  "@appTitle": {
-    "description": "Заголовок в шапке и во вкладке браузера"
-  },
-  
   "actionToggleTheme": "Переключить тему",
-  
   "proteinAccession": "Accession: {accession}",
   "@proteinAccession": {
     "placeholders": {
@@ -15,7 +10,6 @@
       }
     }
   },
-  
   "detailOrganism": "Организм",
   "detailProteinName": "Название белка",
   "detailSequenceLength": "Длина: {length} АК",
@@ -26,27 +20,20 @@
       }
     }
   },
-  
   "sectionSequence": "Аминокислотная последовательность",
   "sectionRelated": "Связанные белки",
-  
   "detailNotFound": "Записи «{accession}» в каталоге нет",
   "@detailNotFound": {
-    "description": "Номер из адресной строки не нашёлся",
     "placeholders": {
       "accession": {
         "type": "String"
       }
     }
   },
-  
   "pageNotFound": "Такой страницы нет",
-  "@pageNotFound": {
-    "description": "Адрес, которого нет среди маршрутов"
-  },
-  
   "searchHint": "Поиск по имени (например, ALPA)",
   "actionClearSearch": "Очистить поиск",
-  
-  "emptyRelated": "Связанных белков не найдено."
+  "emptyRelated": "Связанных белков не найдено.",
+  "nothingFound": "Ничего не найдено",
+  "systemError": "Произошла системная ошибка"
 }

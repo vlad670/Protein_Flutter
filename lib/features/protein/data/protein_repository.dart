@@ -41,17 +41,16 @@ class ProteinRepository implements IProteinRepository {
   @override
   Future<ProteinDetailData> getProteinDetailData(String accession) async {
     final mainProtein = await getProteinByAccession(accession);
-    final relatedFullModels = <ProteinModel>[];
-    for (final relatedLink in mainProtein.related) {
+    final relatedFutures = mainProtein.related.map((relatedLink) async {
       try {
-        final relatedProtein = await getProteinByAccession(
-          relatedLink.accession,
-        );
-        relatedFullModels.add(relatedProtein);
-      } catch (e) {
-        continue;
+        return await getProteinByAccession(relatedLink.accession);
+      } catch (_) {
+        return null;
       }
-    }
+    });
+    final results = await Future.wait(relatedFutures);
+    final relatedFullModels = results.whereType<ProteinModel>().toList();
+
     return ProteinDetailData(
       mainProtein: mainProtein,
       relatedProteins: relatedFullModels,

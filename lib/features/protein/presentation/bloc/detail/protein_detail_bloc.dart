@@ -1,8 +1,5 @@
-// lib/features/protein/presentation/bloc/detail/protein_detail_bloc.dart
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:protein/features/protein/domain/i_protein_repository.dart';
-import 'package:protein/features/protein/domain/protein_model.dart';
 import 'package:protein/features/protein/presentation/bloc/detail/protein_detail_event.dart';
 import 'package:protein/features/protein/presentation/bloc/detail/protein_detail_state.dart';
 import 'package:protein/features/protein/domain/protein_exceptions.dart';
@@ -30,12 +27,12 @@ class ProteinDetailBloc extends Bloc<ProteinDetailEvent, ProteinDetailState> {
           relatedProteins: detailData.relatedProteins,
         ),
       );
-    } on ProteinNotFoundException catch (e) {
+    } on ProteinNotFoundException {
       if (isClosed) return;
       emit(ProteinDetailNotFound(event.accession));
-    } catch (e) {
+    } catch (_) {
       if (isClosed) return;
-      emit(ProteinDetailError('Произошла системная ошибка: $e'));
+      emit(const ProteinDetailError());
     }
   }
 }

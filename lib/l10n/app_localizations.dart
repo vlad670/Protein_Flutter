@@ -98,10 +98,10 @@ abstract class AppLocalizations {
     Locale('ru'),
   ];
 
-  /// Заголовок в шапке и во вкладке браузера
+  /// No description provided for @appTitle.
   ///
   /// In ru, this message translates to:
-  /// **'Покедекс'**
+  /// **'Каталог белков'**
   String get appTitle;
 
   /// No description provided for @actionToggleTheme.
@@ -110,156 +110,58 @@ abstract class AppLocalizations {
   /// **'Переключить тему'**
   String get actionToggleTheme;
 
-  /// No description provided for @pokemonNumber.
+  /// No description provided for @proteinAccession.
   ///
   /// In ru, this message translates to:
-  /// **'#{number}'**
-  String proteinNumber(String number);
+  /// **'Accession: {accession}'**
+  String proteinAccession(String accession);
 
-  /// No description provided for @statHp.
+  /// No description provided for @detailOrganism.
   ///
   /// In ru, this message translates to:
-  /// **'Здоровье'**
-  String get statHp;
-
-  /// No description provided for @statAttack.
-  ///
-  /// In ru, this message translates to:
-  /// **'Атака'**
-  String get statAttack;
-
-  /// No description provided for @statDefense.
-  ///
-  /// In ru, this message translates to:
-  /// **'Защита'**
-  String get statDefense;
-
-  /// No description provided for @statSpecialAttack.
-  ///
-  /// In ru, this message translates to:
-  /// **'Спец. атака'**
-  String get statSpecialAttack;
-
-  /// No description provided for @statSpecialDefense.
-  ///
-  /// In ru, this message translates to:
-  /// **'Спец. защита'**
-  String get statSpecialDefense;
-
-  /// No description provided for @statSpeed.
-  ///
-  /// In ru, this message translates to:
-  /// **'Скорость'**
-  String get statSpeed;
-
-  /// No description provided for @detailHeight.
-  ///
-  /// In ru, this message translates to:
-  /// **'Рост: {height} м'**
-  String detailHeight(double height);
-
-  /// No description provided for @detailWeight.
-  ///
-  /// In ru, this message translates to:
-  /// **'Вес: {weight} кг'**
-  String detailWeight(double weight);
-
-  /// No description provided for @detailBaseXp.
-  ///
-  /// In ru, this message translates to:
-  /// **'Базовый опыт: {xp}'**
-  String detailBaseXp(int xp);
-
-  /// No description provided for @sectionStats.
-  ///
-  /// In ru, this message translates to:
-  /// **'Характеристики'**
-  String get sectionStats;
-
-  /// No description provided for @sectionAbilities.
-  ///
-  /// In ru, this message translates to:
-  /// **'Способности'**
-  String get sectionAbilities;
-
-  /// No description provided for @sectionEvolution.
-  ///
-  /// In ru, this message translates to:
-  /// **'Эволюция'**
-  String get sectionEvolution;
-
-  /// Способность, которая в игре достаётся редко
-  ///
-  /// In ru, this message translates to:
-  /// **'{name} · скрытая'**
-  String abilityHidden(String name);
-
-  /// Номер из адресной строки не нашёлся
-  ///
-  /// In ru, this message translates to:
-  /// **'Записи «{id}» в каталоге нет'**
-  String detailNotFound(String id);
-
+  /// **'Организм'**
   String get detailOrganism;
-  String get detailProteinName;
-  String detailSequenceLength(int length);
-  String get sectionSequence;
-  String get sectionRelated;
-  String get emptyRelated;
-  String get nothingFound;
 
-  /// Адрес, которого нет среди маршрутов
+  /// No description provided for @detailProteinName.
+  ///
+  /// In ru, this message translates to:
+  /// **'Название белка'**
+  String get detailProteinName;
+
+  /// No description provided for @detailSequenceLength.
+  ///
+  /// In ru, this message translates to:
+  /// **'Длина: {length} АК'**
+  String detailSequenceLength(int length);
+
+  /// No description provided for @sectionSequence.
+  ///
+  /// In ru, this message translates to:
+  /// **'Аминокислотная последовательность'**
+  String get sectionSequence;
+
+  /// No description provided for @sectionRelated.
+  ///
+  /// In ru, this message translates to:
+  /// **'Связанные белки'**
+  String get sectionRelated;
+
+  /// No description provided for @detailNotFound.
+  ///
+  /// In ru, this message translates to:
+  /// **'Записи «{accession}» в каталоге нет'**
+  String detailNotFound(String accession);
+
+  /// No description provided for @pageNotFound.
   ///
   /// In ru, this message translates to:
   /// **'Такой страницы нет'**
   String get pageNotFound;
 
-  /// No description provided for @typeBug.
-  ///
-  /// In ru, this message translates to:
-  /// **'Насекомое'**
-  String get typeBug;
-
-  /// No description provided for @typeFire.
-  ///
-  /// In ru, this message translates to:
-  /// **'Огонь'**
-  String get typeFire;
-
-  /// No description provided for @typeFlying.
-  ///
-  /// In ru, this message translates to:
-  /// **'Полёт'**
-  String get typeFlying;
-
-  /// Тип записи. В данных он приходит идентификатором grass, на экран идёт эта подпись
-  ///
-  /// In ru, this message translates to:
-  /// **'Трава'**
-  String get typeGrass;
-
-  /// No description provided for @typeNormal.
-  ///
-  /// In ru, this message translates to:
-  /// **'Обычный'**
-  String get typeNormal;
-
-  /// No description provided for @typePoison.
-  ///
-  /// In ru, this message translates to:
-  /// **'Яд'**
-  String get typePoison;
-
-  /// No description provided for @typeWater.
-  ///
-  /// In ru, this message translates to:
-  /// **'Вода'**
-  String get typeWater;
-
   /// No description provided for @searchHint.
   ///
   /// In ru, this message translates to:
-  /// **'Поиск по имени'**
+  /// **'Поиск по имени (например, ALPA)'**
   String get searchHint;
 
   /// No description provided for @actionClearSearch.
@@ -267,6 +169,24 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'Очистить поиск'**
   String get actionClearSearch;
+
+  /// No description provided for @emptyRelated.
+  ///
+  /// In ru, this message translates to:
+  /// **'Связанных белков не найдено.'**
+  String get emptyRelated;
+
+  /// No description provided for @nothingFound.
+  ///
+  /// In ru, this message translates to:
+  /// **'Ничего не найдено'**
+  String get nothingFound;
+
+  /// No description provided for @systemError.
+  ///
+  /// In ru, this message translates to:
+  /// **'Произошла системная ошибка'**
+  String get systemError;
 }
 
 class _AppLocalizationsDelegate

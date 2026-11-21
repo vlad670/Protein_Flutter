@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-// Убедитесь, что пути соответствуют вашему новому проекту
 import '../../../../common/widgets/app_scaffold.dart';
 import '../../domain/i_protein_repository.dart';
 import '../../domain/protein_model.dart';
@@ -15,7 +14,6 @@ import 'package:protein/l10n/app_localizations.dart';
 import 'widgets/section.dart';
 import 'widgets/related_row.dart';
 
-/// Экран детальной информации о белке.
 class ProteinDetailScreen extends StatelessWidget {
   const ProteinDetailScreen({super.key, required this.accession});
 
@@ -38,8 +36,9 @@ class ProteinDetailScreen extends StatelessWidget {
                 AppLocalizations.of(context).detailNotFound(accession),
               ),
             ),
-
-            ProteinDetailError(message: final msg) => Center(child: Text(msg)),
+            ProteinDetailError() => Center(
+              child: Text(AppLocalizations.of(context).systemError),
+            ),
             ProteinDetailLoaded(:final protein, :final relatedProteins) =>
               _DetailContent(
                 protein: protein,
@@ -66,13 +65,11 @@ class _DetailContent extends StatelessWidget {
     return SingleChildScrollView(
       padding: const EdgeInsets.all(24),
       child: Center(
-        // Ограничиваем ширину для красоты на больших экранах
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 640),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // 1. Заголовок (Кружок с акцентным цветом и название)
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -114,15 +111,10 @@ class _DetailContent extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 24),
-
-              // 2. Основная информация (Организм и Полное название)
               Card(
                 elevation: 0,
                 color: theme.colorScheme.surfaceContainerHighest.withValues(
                   alpha: 0.5,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
@@ -150,8 +142,6 @@ class _DetailContent extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 24),
-
-              // 3. Секция Аминокислотной последовательности
               Section(title: l10n.sectionSequence),
               const SizedBox(height: 8),
               Container(
@@ -164,17 +154,14 @@ class _DetailContent extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Text(
-                  // Разбиваем последовательность пробелами каждые 10 символов для читаемости
                   _formatSequence(protein.sequence),
                   style: theme.textTheme.bodyMedium?.copyWith(
-                    fontFamily: 'monospace', // Моноширинный шрифт важен для последовательностей
+                    fontFamily: 'monospace',
                     letterSpacing: 1.2,
                   ),
                 ),
               ),
               const SizedBox(height: 24),
-
-              // 4. Связанные белки (Related)
               Section(title: l10n.sectionRelated),
               const SizedBox(height: 12),
               RelatedRow(relatedProteins: relatedProteins),
@@ -186,8 +173,6 @@ class _DetailContent extends StatelessWidget {
     );
   }
 
-  /// Вспомогательный метод для красивого вывода последовательности
-  /// (Разбивает строку на блоки по 10 символов)
   String _formatSequence(String sequence) {
     if (sequence.isEmpty) return 'No sequence available';
     final buffer = StringBuffer();
@@ -199,7 +184,6 @@ class _DetailContent extends StatelessWidget {
   }
 }
 
-/// Вспомогательный виджет для строки информации
 class _InfoRow extends StatelessWidget {
   const _InfoRow({required this.title, required this.value});
 

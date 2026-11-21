@@ -8,8 +8,6 @@ import 'package:protein/features/protein/presentation/view/widgets/search_field.
 
 import 'package:protein/l10n/app_localizations.dart';
 
-/// Экран списка. Cubit создан в корне приложения, экран только читает его
-/// состояние и вызывает его методы.
 class ProteinListScreen extends StatelessWidget {
   const ProteinListScreen({super.key});
 
@@ -24,8 +22,6 @@ class ProteinListScreen extends StatelessWidget {
               onChanged: context.read<ProteinListCubit>().search,
             ),
           ),
-          // Expanded обязателен: в Column без него ListView получает
-          // бесконечную высоту и падает с ошибкой unbounded height.
           Expanded(
             child: BlocBuilder<ProteinListCubit, ProteinListState>(
               builder: (context, state) {
