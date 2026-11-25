@@ -7,7 +7,7 @@ plugins {
 android {
     namespace = "com.example.my_catalog"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    ndkVersion = ""
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
