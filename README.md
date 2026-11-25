@@ -1,17 +1,45 @@
-# my_catalog
+# Каталог белков (Protein Catalog) — Flutter
 
-A new Flutter project.
+Кроссплатформенное приложение для просмотра и поиска информации о белках на базе предметной области [UniProtKB](https://www.uniprot.org/).
 
-## Getting Started
+## Предметная область
+В каталоге представлены записи о белках со следующими характеристиками:
+- **Идентификаторы:** `accession`, `entryName`, `geneName`.
+- **Биологическое описание:** полное название белка, организм.
+- **Последовательность:** первичная аминокислотная последовательность с форматированием блоками по 10 символов.
+- **Связанные белки:** перечень взаимодействующих белков с возможностью перехода на экран деталей каждого из них.
 
-This project is a starting point for a Flutter application.
+## Архитектура
+Проект организован по фичам:
+- `lib/features/protein/domain/` — модель `ProteinModel`, `ProteinDetailData`, исключение `ProteinNotFoundException` и интерфейс репозитория `IProteinRepository`.
+- `lib/features/protein/data/` — моковые данные `mock_proteins.dart` и реализация `ProteinRepository` с параллельной загрузкой связанных белков через `Future.wait`.
+- `lib/features/protein/presentation/` — `ProteinListCubit`, `ProteinDetailBloc`, экраны списка и деталей, виджеты.
+- `lib/common/` — навигация на `go_router` (`AppRoutes`), управление темой (`ThemeCubit`), общий `AppScaffold`.
+- `lib/l10n/` — файлы локализации (`app_ru.arb`, `app_en.arb`) и сгенерированный `AppLocalizations`.
 
-A few resources to get you started if this is your first Flutter project:
+## Команды запуска
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+### Генерация локализации
+```bash
+flutter gen-l10n
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Запуск на Windows (Desktop)
+```bash
+flutter run -d windows
+```
+
+### Запуск в браузере (Web)
+```bash
+flutter run -d chrome
+```
+
+### Запуск с принудительной локалью
+```bash
+flutter run -d chrome --dart-define=LOCALE=en
+```
+
+### Проверка анализатором
+```bash
+flutter analyze
+```

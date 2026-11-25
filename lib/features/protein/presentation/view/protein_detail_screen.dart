@@ -92,7 +92,7 @@ class _DetailContent extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Accession: ${protein.accession}',
+                          l10n.proteinAccession(protein.accession),
                           style: theme.textTheme.labelLarge?.copyWith(
                             color: theme.colorScheme.onSurfaceVariant,
                           ),
@@ -154,7 +154,9 @@ class _DetailContent extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Text(
-                  _formatSequence(protein.sequence),
+                  protein.sequence.isEmpty
+                      ? l10n.noSequence
+                      : _formatSequence(protein.sequence),
                   style: theme.textTheme.bodyMedium?.copyWith(
                     fontFamily: 'monospace',
                     letterSpacing: 1.2,
@@ -174,7 +176,6 @@ class _DetailContent extends StatelessWidget {
   }
 
   String _formatSequence(String sequence) {
-    if (sequence.isEmpty) return 'No sequence available';
     final buffer = StringBuffer();
     for (int i = 0; i < sequence.length; i++) {
       if (i > 0 && i % 10 == 0) buffer.write(' ');

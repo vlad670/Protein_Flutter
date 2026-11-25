@@ -1,5 +1,3 @@
-// lib/features/protein/data/mock_proteins.dart
-
 import '../domain/protein_model.dart';
 
 const List<ProteinModel> mockProteins = [

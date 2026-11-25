@@ -4,9 +4,8 @@ import 'package:protein/common/navigation/app_router.dart';
 import 'package:protein/features/protein/domain/protein_model.dart';
 import 'package:protein/features/protein/presentation/utils/protein_format.dart';
 import 'package:protein/features/protein/presentation/view/widgets/card_surface.dart';
+import 'package:protein/l10n/app_localizations.dart';
 
-/// Карточка списка: картинка слева, номер, имя и типы справа. Нажатие
-/// открывает деталь записи.
 class ProteinCard extends StatelessWidget {
   const ProteinCard({super.key, required this.protein});
 
@@ -15,25 +14,21 @@ class ProteinCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context);
     return CardSurface(
-      // Переход вызывает сам виджет. push кладёт деталь поверх списка, и
-      // «назад» вернёт к нему.
       onTap: () => context.push(AppRoutes.detail(protein.accession)),
       child: Row(
         children: [
-          // Заглушка вместо картинки: кружок с инициалом
           Container(
             width: 64,
             height: 64,
-            decoration: BoxDecoration(
-              //  color: protein.accent.withOpacity(0.2),
+            decoration: const BoxDecoration(
               shape: BoxShape.circle,
             ),
             child: Center(
               child: Text(
                 protein.displayName.substring(0, 1).toUpperCase(),
                 style: theme.textTheme.headlineSmall?.copyWith(
-                  //  color: protein.accent,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -46,7 +41,7 @@ class ProteinCard extends StatelessWidget {
               spacing: 4,
               children: [
                 Text(
-                  'Accession: ${protein.accession}',
+                  l10n.proteinAccession(protein.accession),
                   style: theme.textTheme.labelMedium?.copyWith(
                     color: theme.colorScheme.onSurfaceVariant,
                   ),

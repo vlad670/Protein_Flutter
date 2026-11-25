@@ -59,4 +59,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get systemError => 'System error occurred';
+
+  @override
+  String get noSequence => 'No sequence available';
 }

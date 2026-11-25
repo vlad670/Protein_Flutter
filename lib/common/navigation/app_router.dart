@@ -12,13 +12,15 @@ abstract final class AppRoutes {
       GoRoute(
         path: list,
         builder: (context, state) => const ProteinListScreen(),
-      ),
-      GoRoute(
-        path: '/protein/:accession',
-        builder: (context, state) {
-          final accession = state.pathParameters['accession']!;
-          return ProteinDetailScreen(accession: accession);
-        },
+        routes: [
+          GoRoute(
+            path: 'protein/:accession',
+            builder: (context, state) {
+              final accession = state.pathParameters['accession']!;
+              return ProteinDetailScreen(accession: accession);
+            },
+          ),
+        ],
       ),
     ],
   );

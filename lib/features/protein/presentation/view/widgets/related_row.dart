@@ -1,5 +1,3 @@
-// lib/features/protein/presentation/view/widgets/related_row.dart
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -12,7 +10,6 @@ import 'package:protein/l10n/app_localizations.dart';
 class RelatedRow extends StatelessWidget {
   const RelatedRow({super.key, required this.relatedProteins});
 
-  /// Список полных моделей связанных белков (загруженных BLoC'ом)
   final List<ProteinModel> relatedProteins;
 
   @override
@@ -51,13 +48,11 @@ class _RelatedStage extends StatelessWidget {
         width: 100,
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
-          //color: protein.accent.withOpacity(0.1),
           borderRadius: BorderRadius.circular(12),
-          //border: Border.all(color: protein.accent.withOpacity(0.3)),
+          border: Border.all(color: theme.colorScheme.outlineVariant),
         ),
         child: Column(
           children: [
-            //Icon(Icons.link, color: protein.accent, size: 28),
             const SizedBox(height: 6),
             Text(
               protein.displayName,

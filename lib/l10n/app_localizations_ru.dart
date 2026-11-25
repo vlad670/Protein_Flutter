@@ -59,4 +59,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get systemError => 'Произошла системная ошибка';
+
+  @override
+  String get noSequence => 'Последовательность отсутствует';
 }

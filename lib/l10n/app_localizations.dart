@@ -187,6 +187,12 @@ abstract class AppLocalizations {
   /// In ru, this message translates to:
   /// **'Произошла системная ошибка'**
   String get systemError;
+
+  /// No description provided for @noSequence.
+  ///
+  /// In ru, this message translates to:
+  /// **'Последовательность отсутствует'**
+  String get noSequence;
 }
 
 class _AppLocalizationsDelegate

@@ -35,5 +35,6 @@
   "actionClearSearch": "Clear search",
   "emptyRelated": "No related proteins found.",
   "nothingFound": "Nothing found",
-  "systemError": "System error occurred"
+  "systemError": "System error occurred",
+  "noSequence": "No sequence available"
 }
